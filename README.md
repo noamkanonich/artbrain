@@ -2,8 +2,8 @@
 Home assignment solution by Noam Kanonich
 
 # How To Start
-Download the repository zip file.
-Open the command line and go to the app's folder location.
-Type the following - "npm install" to install all dependencies that are require for using this web app.
-Type "node app.js" to start the server.
-Open your internet browser and enter the following link - "http://localhost:3000/.
+1. Download the repository zip file.
+2. Open the command line and go to the app's folder location.
+3. Type the following - "npm install" to install all dependencies that are require for using this web app.
+4. Type "node app.js" to start the server.
+5. Open your internet browser and enter the following link - "http://localhost:3000/
