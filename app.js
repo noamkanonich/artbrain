@@ -125,7 +125,6 @@ function textRules(notifications){
       }
       if(notification.type === 'success'){
         notification.content = "New books with LIMITED EDITION coming next week~~";
-
       }
     }
     if(notification.content.includes("sale") === true){
@@ -134,7 +133,6 @@ function textRules(notifications){
   })
   return notifications;
 }
-
 
 app.get("/", function (req, res) {
   initiateNotifications();
@@ -181,7 +179,6 @@ app.post("/", function (req, res) {
     });
   });
 });
-
 
 app.listen(3000, function () {
   User.deleteMany({}, function (err) {
