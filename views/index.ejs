@@ -63,7 +63,6 @@
             },(<%= notificaitons[1].timeToLast %> * 1000))
         },(<%= notificaitons[1].timeToAppear %> * 1000) + (<%= notificaitons[1].timeToLast %> * 1000));
 
-
         setInterval(function(){
             if(<%= notificaitons[2].isClicked === false %>) {
                 document.getElementById("error").classList.add('display');
@@ -73,7 +72,6 @@
             },(<%= notificaitons[2].timeToLast %> * 1000))
         },(<%= notificaitons[2].timeToAppear %> * 1000) + (<%= notificaitons[2].timeToLast %> * 1000));
 
-
         setInterval(function(){
             if(<%= notificaitons[3].isClicked === false %>) {
                 document.getElementById("success").classList.add('display');
@@ -82,7 +80,6 @@
                 document.getElementById("success").classList.remove("display");;
             },(<%= notificaitons[3].timeToLast %> * 1000))
         },(<%= notificaitons[3].timeToAppear %> * 1000) + (<%= notificaitons[3].timeToLast %> * 1000));
-
       }
 
       notificaitonsInterval();
