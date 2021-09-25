@@ -1,0 +1,69 @@
+.close-btn {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    border: none;
+    outline: none;
+}
+
+.close-btn:focus {
+    outline: none;
+}
+
+.info {
+    /* background-color: lightblue;
+    border: 1px solid blue; */
+    height: 50px;
+    /* padding: 40px; */
+}
+
+.warning {
+    background-color: lightblue;
+}
+
+.success {
+    background-color: lightblue;
+}
+
+.error {
+    background-color: lightblue;
+}
+
+.display {
+    display: block;
+}
+
+.hidden {
+    display: none;
+  }
+
+.alert:not(.display){
+    display: none;
+}
+
+.alert.display {
+    display: block;
+}
+
+
+.markInfo {
+    border: 3px solid #d1ecf1;
+    background-color: #9dd7e1;
+}
+
+.markWarning {
+    border: 3px solid #fff3cd;
+    background-color: #ffe180;
+}
+
+.markError {
+    border: 3px solid #f8d7da;
+    background-color: #ec939a;
+}
+
+.markSuccess {
+    border: 3px solid #d4edda;
+    background-color: #a5d9b1;
+}

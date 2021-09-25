@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artbrain</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script type="text/javascript">
+
+      async function notificaitonsInterval(){
+        setInterval(function(){
+            if(<%= notificaitons[0].isClicked === false %>) {
+                document.getElementById("info").classList.add('display');
+            }
+            setTimeout(function(){
+                document.getElementById("info").classList.remove("display");;
+            },(<%= notificaitons[0].timeToLast %> * 1000))
+        },(<%= notificaitons[0].timeToAppear %> * 1000) + (<%= notificaitons[0].timeToLast %> * 1000));
+
+        setInterval(function(){
+            if(<%= notificaitons[1].isClicked === false %>) {
+                document.getElementById("warning").classList.add('display');
+            }
+            setTimeout(function(){
+                document.getElementById("warning").classList.remove("display");;
+            },(<%= notificaitons[1].timeToLast %> * 1000))
+        },(<%= notificaitons[1].timeToAppear %> * 1000) + (<%= notificaitons[1].timeToLast %> * 1000));
+
+
+        setInterval(function(){
+            if(<%= notificaitons[2].isClicked === false %>) {
+                document.getElementById("error").classList.add('display');
+            }
+            setTimeout(function(){
+                document.getElementById("error").classList.remove("display");;
+            },(<%= notificaitons[2].timeToLast %> * 1000))
+        },(<%= notificaitons[2].timeToAppear %> * 1000) + (<%= notificaitons[2].timeToLast %> * 1000));
+
+
+        setInterval(function(){
+            if(<%= notificaitons[3].isClicked === false %>) {
+                document.getElementById("success").classList.add('display');
+            }
+            setTimeout(function(){
+                document.getElementById("success").classList.remove("display");;
+            },(<%= notificaitons[3].timeToLast %> * 1000))
+        },(<%= notificaitons[3].timeToAppear %> * 1000) + (<%= notificaitons[3].timeToLast %> * 1000));
+
+      }
+
+      notificaitonsInterval();
+
+    </script>
+  </head>
+  <body>
+    <h3 class="text-center p-4">user id - <%= id %></h3>
+
+    <div class="container pt-4" style="width: 45%">
+      <form action="/" method="POST" id="infoForm">
+        <div
+          id="info"
+          class="alert alert-info info"
+          role="alert"
+          onclick="infoForm(this)"
+        >
+          <div class="row">
+            <div class="col-9">
+              <i class="fas fa-info-circle"></i>
+              <b><%= notificaitons[0].type %>:</b> <%= notificaitons[0].content
+              %>
+            </div>
+            <div class="col-3 text-right">
+              <button
+                type="button"
+                class="close-btn"
+                onclick="closeNotification('<%= notificaitons[0].type %>')"
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" name="type" value="info" />
+        <input type="hidden" name="id" value="<%= id %>" />
+      </form>
+
+      <form action="/" method="POST" id="warningForm">
+        <div
+          id="warning"
+          class="alert alert-warning"
+          role="alert"
+          onclick="warningForm(this)"
+        >
+          <div class="row">
+            <div class="col-9">
+              <i class="fas fa-exclamation-triangle"></i>
+              <b><%= notificaitons[1].type %>:</b> <%= notificaitons[1].content
+              %>
+            </div>
+            <div class="col-3 text-right">
+              <button
+                type="button"
+                class="close-btn"
+                onclick="closeNotification('<%= notificaitons[1].type %>')"
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" name="type" value="warning" />
+        <input type="hidden" name="id" value="<%= id %>" />
+      </form>
+
+      <form action="/" method="POST" id="errorForm">
+        <div
+          id="error"
+          class="alert alert-danger"
+          role="alert"
+          onclick="errorForm(this)"
+        >
+          <div class="row">
+            <div class="col-9">
+              <i class="fas fa-ban"></i>
+              <b><%= notificaitons[2].type %>:</b> <%= notificaitons[2].content
+              %>
+            </div>
+            <div class="col-3 text-right">
+              <button
+                type="button"
+                class="close-btn"
+                onclick="closeNotification('<%= notificaitons[2].type %>')"
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <input type="hidden" name="type" value="error" />
+        <input type="hidden" name="id" value="<%= id %>" />
+      </form>
+
+      <form action="/" method="POST" id="successForm">
+        <div
+          id="success"
+          class="alert alert-success"
+          role="alert"
+          onclick="successForm()"
+        >
+          <div class="row">
+            <div class="col-10">
+              <i class="far fa-check-circle"></i>
+              <b><%= notificaitons[3].type %>:</b> <%= notificaitons[3].content%>
+            </div>
+            <div class="col-2 text-right">
+              <button
+                type="button"
+                class="close-btn"
+                onclick="closeNotification('<%= notificaitons[3].type %>')"
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <input type="hidden" name="type" value="success" />
+        <input type="hidden" name="id" value="<%= id %>" />
+      </form>
+    </div>
+
+    <script src="js/main.js" charset="utf-8"></script>
+  </body>
+</html>
